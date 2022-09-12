@@ -1,54 +1,55 @@
--- MariaDB dump 10.19  Distrib 10.4.24-MariaDB, for Win64 (AMD64)
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: online-admission
--- ------------------------------------------------------
--- Server version	10.4.24-MariaDB
+-- Host: 127.0.0.1
+-- Generation Time: Sep 12, 2022 at 11:42 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.3.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Database: `online-admission`
+--
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `admin`
 --
 
-DROP TABLE IF EXISTS `admin`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admin` (
-  `ID` int(4) NOT NULL AUTO_INCREMENT,
+  `ID` int(4) NOT NULL,
   `username` varchar(15) NOT NULL,
-  `password` varchar(15) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `password` varchar(15) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-LOCK TABLES `admin` WRITE;
-/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,'admin','admin123'),(2,'assistant','123'),(3,'cashier','123');
-/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `admin` (`ID`, `username`, `password`) VALUES
+(1, 'admin', 'admin123'),
+(2, 'assistant', '123'),
+(3, 'cashier', '123');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `admission`
 --
 
-DROP TABLE IF EXISTS `admission`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admission` (
-  `ID` int(3) NOT NULL AUTO_INCREMENT,
+  `ID` int(3) NOT NULL,
   `stud_id` int(11) NOT NULL,
   `fullname` varchar(45) NOT NULL,
   `sex` varchar(15) NOT NULL,
@@ -76,301 +77,214 @@ CREATE TABLE `admission` (
   `status` varchar(44) NOT NULL,
   `photo` varchar(200) NOT NULL,
   `date_admission` varchar(22) NOT NULL,
-  `applicationID` varchar(15) NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `stud_id` (`stud_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `applicationID` varchar(15) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admission`
 --
 
-LOCK TABLES `admission` WRITE;
-/*!40000 ALTER TABLE `admission` DISABLE KEYS */;
-INSERT INTO `admission` VALUES (31,0,'OUNG-VANG Moise II Bonheur','Male','0784319074','oungvang11@gmail.com','123456789','','',NULL,NULL,NULL,NULL,NULL,'','','','Tchad',' Ndjamena','R0426715',78,'Information Technology','Software engineering','TOEFL','upload/Result-Report-card-software.jpeg','0','upload/Result-Report-card-software.jpeg','2022-08-25','202215493'),(28,0,'Pauline RUNGEZEKURE',' ','+25078353092','rungezekurepaeuline@gmail.com','1234','','',NULL,NULL,NULL,NULL,NULL,'','','','Uganda','Kigali  ','07890817373',12,'Yvette Snow','Lyle Combs','Amela Atkinson','upload/Result-Report-card-software.png','0','upload/default.jpg','2022-08-18','ADM_2022_12055');
-/*!40000 ALTER TABLE `admission` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `admission` (`ID`, `stud_id`, `fullname`, `sex`, `phone`, `email`, `password`, `fathername`, `mothername`, `recommendation_referee`, `transcript_from_college`, `application_fee`, `passportphoto`, `signed_application_form`, `updated_cv`, `secondary_school_certificate`, `diploma`, `lga`, `state`, `passport_number`, `grade_score`, `faculty`, `dept`, `proficiency_test`, `ssce`, `status`, `photo`, `date_admission`, `applicationID`) VALUES
+(31, 0, 'OUNG-VANG Moise II Bonheur', 'Male', '0784319074', 'oungvang11@gmail.com', '123456789', '', '', NULL, NULL, NULL, NULL, NULL, '', '', '', 'Tchad', ' Ndjamena', 'R0426715', 78, 'Information Technology', 'Software engineering', 'TOEFL', 'upload/Result-Report-card-software.jpeg', '1', 'upload/Result-Report-card-software.jpeg', '2022-08-25', '202215493'),
+(28, 0, 'Pauline RUNGEZEKURE', ' ', '+25078353092', 'rungezekurepaeuline@gmail.com', '1234', '', '', NULL, NULL, NULL, NULL, NULL, '', '', '', 'Uganda', 'Kigali  ', '07890817373', 12, 'Yvette Snow', 'Lyle Combs', 'Amela Atkinson', 'upload/Result-Report-card-software.png', '0', 'upload/default.jpg', '2022-08-18', 'ADM_2022_12055');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `categories` (
-  `id` int(30) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id` int(30) NOT NULL,
+  `name` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `categories`
 --
 
-LOCK TABLES `categories` WRITE;
-/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Single'),(2,'Single-Family Home'),(3,'Multi-Family Home'),(4,'2-story house');
-/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `categories` (`id`, `name`) VALUES
+(1, 'Single'),
+(2, 'Single-Family Home'),
+(3, 'Multi-Family Home'),
+(4, '2-story house');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `documents`
 --
 
-DROP TABLE IF EXISTS `documents`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `documents` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
+  `file_path` varchar(255) NOT NULL DEFAULT '../upload/',
   `file_name` varchar(255) NOT NULL,
+  `reason` varchar(80) NOT NULL,
   `document_owner` varchar(255) NOT NULL,
-  `uploaded_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`),
-  KEY `document_owner` (`document_owner`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `uploaded_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `documents`
 --
 
-LOCK TABLES `documents` WRITE;
-/*!40000 ALTER TABLE `documents` DISABLE KEYS */;
-INSERT INTO `documents` VALUES (1,'ADM_2022_69643_anat.JPG','ADM_2022_69643','2022-08-16 19:23:45'),(2,'ADM_2022_69643_anat2.JPG','ADM_2022_69643','2022-08-16 19:23:45'),(3,'ADM_2022_69643_anat.JPG','ADM_2022_69643','2022-08-17 16:41:51'),(4,'ADM_2022_69643_anat2.JPG','ADM_2022_69643','2022-08-17 16:41:51'),(5,'202215493_Capture.PNG','202215493','2022-08-31 07:02:36'),(6,'202215493_cisco.JPG','202215493','2022-08-31 07:02:36');
-/*!40000 ALTER TABLE `documents` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `documents` (`id`, `file_path`, `file_name`, `reason`, `document_owner`, `uploaded_on`) VALUES
+(1, '../upload/', '202215493_visaDoc_20210226_124551.jpg', 'visa', '202215493', '2022-09-08 19:04:14'),
+(2, '../upload/', '202215493_visaDoc_20210226_124557.jpg', 'visa', '202215493', '2022-09-08 19:04:10'),
+(3, '../upload/', '202215493_20210226_124551.jpg', 'application', '202215493', '2022-09-08 19:04:07'),
+(4, '../upload/', '202215493_20210226_124559.jpg', 'application', '202215493', '2022-09-08 19:04:03'),
+(10, '../upload/', '\" . $newfilename . \"', 'application', '\" . $_SESSION[\"applicationID\"] . \"', '2022-09-08 20:48:09'),
+(11, '', '202215493_visaDoc_CCATS_PROPOSAL.pdf', 'visa', '202215493', '2022-09-08 20:49:54'),
+(12, '', '202215493_visaDoc_CCATS_PROPOSAL.pptx', 'visa', '202215493', '2022-09-08 20:49:54'),
+(13, '', '202215493_visaDoc_Gant chart.docx', 'visa', '202215493', '2022-09-08 20:49:54'),
+(14, '../upload/', '202215493_visaDoc_Gant chart.pdf', 'visa', '202215493', '2022-09-08 20:53:06');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `houses`
 --
 
-DROP TABLE IF EXISTS `houses`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `houses` (
-  `id` int(30) NOT NULL AUTO_INCREMENT,
+  `id` int(30) NOT NULL,
   `house_no` varchar(50) NOT NULL,
   `category_id` int(30) NOT NULL,
   `description` text NOT NULL,
-  `price` double NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `price` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `houses`
 --
 
-LOCK TABLES `houses` WRITE;
-/*!40000 ALTER TABLE `houses` DISABLE KEYS */;
-INSERT INTO `houses` VALUES (2,'12',1,'Folions',2500),(3,'16',3,'klih',23),(4,'623',2,'oiuuuii',3500000),(5,'23',4,'Velit tempora aliqui',936);
-/*!40000 ALTER TABLE `houses` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `houses` (`id`, `house_no`, `category_id`, `description`, `price`) VALUES
+(2, '12', 1, 'Folions', 2500),
+(3, '16', 3, 'klih', 23),
+(4, '623', 2, 'oiuuuii', 3500000),
+(5, '23', 4, 'Velit tempora aliqui', 936);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `infopdf`
+--
+
+CREATE TABLE `infopdf` (
+  `fileid` int(11) NOT NULL,
+  `filename` varchar(150) NOT NULL,
+  `directory` varchar(150) NOT NULL,
+  `created_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `payments`
 --
 
-DROP TABLE IF EXISTS `payments`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `payments` (
-  `id` int(30) NOT NULL AUTO_INCREMENT,
+  `id` int(30) NOT NULL,
   `tenant_id` int(30) NOT NULL,
   `amount` float NOT NULL,
   `invoice` varchar(50) NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `payments`
---
-
-LOCK TABLES `payments` WRITE;
-/*!40000 ALTER TABLE `payments` DISABLE KEYS */;
-INSERT INTO `payments` VALUES (1,2,2500,'123456','2020-10-26 11:29:35'),(2,2,7500,'136654','2020-10-26 11:30:21'),(3,2,4500,'1235d','2022-08-23 14:55:04');
-/*!40000 ALTER TABLE `payments` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `registration`
---
-
-DROP TABLE IF EXISTS `registration`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `registration` (
-  `reg_id` int(11) NOT NULL,
-  `stud_id` int(11) NOT NULL,
-  `semester` int(11) NOT NULL,
-  `verified` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`reg_id`),
-  KEY `stud_id` (`stud_id`)
+  `date_created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `registration`
+-- Indexes for dumped tables
 --
 
-LOCK TABLES `registration` WRITE;
-/*!40000 ALTER TABLE `registration` DISABLE KEYS */;
-/*!40000 ALTER TABLE `registration` ENABLE KEYS */;
-UNLOCK TABLES;
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`ID`);
 
 --
--- Table structure for table `scratchcard`
+-- Indexes for table `admission`
 --
-
-DROP TABLE IF EXISTS `scratchcard`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `scratchcard` (
-  `ID` int(4) NOT NULL AUTO_INCREMENT,
-  `pin` varchar(10) NOT NULL,
-  `serial` varchar(10) NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+ALTER TABLE `admission`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `stud_id` (`stud_id`);
 
 --
--- Dumping data for table `scratchcard`
+-- Indexes for table `categories`
 --
-
-LOCK TABLES `scratchcard` WRITE;
-/*!40000 ALTER TABLE `scratchcard` DISABLE KEYS */;
-INSERT INTO `scratchcard` VALUES (1,'7890327890','6789332145',1),(2,'9877659087','6643541231',0),(3,'9000988754','0098786541',1),(4,'9865489076','3214568907',0),(5,'5455009876','3213436903',0),(6,'5567889012','1290875444',0);
-/*!40000 ALTER TABLE `scratchcard` ENABLE KEYS */;
-UNLOCK TABLES;
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table structure for table `system_settings`
+-- Indexes for table `documents`
 --
-
-DROP TABLE IF EXISTS `system_settings`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `system_settings` (
-  `id` int(30) NOT NULL AUTO_INCREMENT,
-  `name` text NOT NULL,
-  `email` varchar(200) NOT NULL,
-  `contact` varchar(20) NOT NULL,
-  `cover_img` text NOT NULL,
-  `about_content` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+ALTER TABLE `documents`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `document_owner` (`document_owner`);
 
 --
--- Dumping data for table `system_settings`
+-- Indexes for table `houses`
 --
-
-LOCK TABLES `system_settings` WRITE;
-/*!40000 ALTER TABLE `system_settings` DISABLE KEYS */;
-INSERT INTO `system_settings` VALUES (1,'House Rental Management System','info@sample.comm','+6948 8542 623','1603344720_1602738120_pngtree-purple-hd-business-banner-image_5493.jpg','&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-weight: 400; text-align: justify;&quot;&gt;&amp;nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;');
-/*!40000 ALTER TABLE `system_settings` ENABLE KEYS */;
-UNLOCK TABLES;
+ALTER TABLE `houses`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table structure for table `tenants`
+-- Indexes for table `infopdf`
 --
-
-DROP TABLE IF EXISTS `tenants`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tenants` (
-  `id` int(30) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(100) NOT NULL,
-  `middlename` varchar(100) NOT NULL,
-  `lastname` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `contact` varchar(50) NOT NULL,
-  `house_id` int(30) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1 = active, 0= inactive',
-  `date_in` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+ALTER TABLE `infopdf`
+  ADD PRIMARY KEY (`fileid`);
 
 --
--- Dumping data for table `tenants`
+-- Indexes for table `payments`
 --
-
-LOCK TABLES `tenants` WRITE;
-/*!40000 ALTER TABLE `tenants` DISABLE KEYS */;
-INSERT INTO `tenants` VALUES (2,'John','C','Smith','jsmith@sample.com','+18456-5455-55',2,1,'2020-07-02'),(3,'Cadman','Jane','Madeline','pahi@mailinator.com','Imelda',3,1,'1981-10-10'),(4,'Blaise','Jane','NINDENKIMANA','bnindenkimana2@gmail.com','0783530924',5,1,'2022-08-24'),(5,'MOISE II','Bonheur','OUNG-VANG','ouvang11@gmail.com','0784319074',4,1,'2022-08-25');
-/*!40000 ALTER TABLE `tenants` ENABLE KEYS */;
-UNLOCK TABLES;
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table structure for table `users`
+-- AUTO_INCREMENT for dumped tables
 --
 
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `id` int(30) NOT NULL AUTO_INCREMENT,
-  `name` text NOT NULL,
-  `username` varchar(200) NOT NULL,
-  `password` text NOT NULL,
-  `type` tinyint(1) NOT NULL DEFAULT 2 COMMENT '1=Admin,2=Staff',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `ID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Dumping data for table `users`
+-- AUTO_INCREMENT for table `admission`
 --
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Administrator','admin','0192023a7bbd73250516f069df18b500',1);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
+ALTER TABLE `admission`
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- Table structure for table `visaapplication`
+-- AUTO_INCREMENT for table `categories`
 --
-
-DROP TABLE IF EXISTS `visaapplication`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `visaapplication` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `applicationID` varchar(11) NOT NULL,
-  `passport_number` varchar(200) NOT NULL,
-  `date_of_issue` date NOT NULL,
-  `date_of_expiry` date NOT NULL,
-  `visa_applied_for` varchar(200) NOT NULL,
-  `date_of_entrance` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `stud_id` (`applicationID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+ALTER TABLE `categories`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Dumping data for table `visaapplication`
+-- AUTO_INCREMENT for table `documents`
 --
+ALTER TABLE `documents`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
-LOCK TABLES `visaapplication` WRITE;
-/*!40000 ALTER TABLE `visaapplication` DISABLE KEYS */;
-/*!40000 ALTER TABLE `visaapplication` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+--
+-- AUTO_INCREMENT for table `houses`
+--
+ALTER TABLE `houses`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- AUTO_INCREMENT for table `infopdf`
+--
+ALTER TABLE `infopdf`
+  MODIFY `fileid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2022-09-02 21:12:21
